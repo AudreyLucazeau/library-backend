@@ -63,4 +63,9 @@ public class Writer {
         this.firstname = firstname;
         this.surname = surname;
     }
+
+    public Writer() {
+    }
+
+
 }
