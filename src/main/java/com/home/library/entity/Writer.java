@@ -58,4 +58,9 @@ public class Writer {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    public Writer(String firstname, String surname) {
+        this.firstname = firstname;
+        this.surname = surname;
+    }
 }
