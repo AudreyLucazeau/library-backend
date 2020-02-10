@@ -10,23 +10,20 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.home.library.service.BookServiceTest.BookServiceTestConfiguration;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringJUnitConfig (BookServiceTestConfiguration.class)
+@SpringJUnitConfig(classes = BookService.class)
 public class BookServiceTest {
 
     @Autowired
     private BookService bookService;
 
-    @Autowired
+    @MockBean
     private BookDao bookDao;
 
     @Test
@@ -97,16 +94,5 @@ public class BookServiceTest {
         book.setWriter(writer);
 
         return book;
-    }
-
-    @Configuration
-    @MockBean(BookDao.class)
-    static class BookServiceTestConfiguration {
-
-        @Bean
-        BookService bookService(BookDao bookDao) {
-            return new BookService(bookDao);
-        }
-
     }
 }
